@@ -1,0 +1,108 @@
+/* /// utility classes /// */
+
+// text positioning
+.text-center {
+  text-align: center;
+}
+
+// font styling
+.font-w-light {
+  font-weight: $font-w-light;
+}
+.font-w-normal {
+  font-weight: $font-w-normal;
+}
+.font-w-bold {
+  font-weight: $font-w-bold;
+}
+.font-w-bolder {
+  font-weight: $font-w-bolder;
+}
+
+// background colors
+.bg-blue-light {
+  background-color: $color-blue-light;
+}
+.bg-blue-medium {
+  background-color: $color-blue-medium;
+}
+.bg-blue-dark {
+  background-color: $color-blue-dark;
+}
+
+// paddings
+.p-0 {
+  padding: 0;
+}
+.py-1-half {
+  padding-top: 0.5rem;
+  padding-bottom: 0.5rem;
+}
+.p-1 {
+  padding: 1rem;
+}
+.px-1 {
+  padding-left: 1rem;
+  padding-right: 1rem;
+}
+.pl-1-half {
+  padding-left: 0.5rem;
+}
+.pr-1-half {
+  padding-right: 0.5rem;
+}
+.px-1-half {
+  padding-left: 0.5rem;
+  padding-right: 0.5rem;
+}
+.pl-1 {
+  padding-left: 1rem;
+}
+.pr-1 {
+  padding-right: 1rem;
+}
+
+// margins
+.m-0 {
+  margin: 0;
+}
+.m-1 {
+  margin: 1rem;
+}
+.mx-1-quarter {
+  margin-left: 0.25rem;
+  margin-right: 0.25rem;
+}
+
+// buttons
+.btn {
+  @extend .py-1-half;
+  @extend .px-1;
+  @extend .mx-1-quarter;
+  border: 0;
+  background-color: transparent;
+  color: #fff;
+  cursor: pointer;
+
+  &:active {
+    transform: scale(0.97);
+  }
+}
+
+// lists
+.list-style-none {
+  list-style: none;
+}
+
+// flex
+.flex {
+  display: flex;
+}
+.flex-align-center {
+  align-items: center;
+}
+
+// masks
+.rhombus {
+  clip-path: polygon(50% 0%, 100% 50%, 50% 100%, 0% 50%);
+}

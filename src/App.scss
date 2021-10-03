@@ -1,0 +1,31 @@
+@import 'styles/reset.scss';
+@import 'styles/variables.scss';
+@import 'styles/utilities.scss';
+
+html {
+  overflow-y: scroll;
+  background-image: gradient(
+    linear,
+    left top,
+    left bottom,
+    from(transparent),
+    to(#000)
+  );
+  background-image: linear-gradient(transparent, #000);
+}
+
+body {
+  color: #fff;
+  font-family: 'Work Sans', sans-serif;
+  background-image: gradient(
+    linear,
+    left top,
+    right top,
+    from($color-hot-pink),
+    to($color-blue-dark)
+  );
+  background-image: linear-gradient(90deg, $color-hot-pink, $color-blue-dark);
+  width: min(100vw, 768px);
+  height: auto;
+  margin: 0 auto;
+}
