@@ -1,11 +1,18 @@
 import render from '../../functions/render';
-import arrow from '../../assets/navigate_next.svg';
+import theData from '../../api/exportContactsData';
+import fetchData from '../../functions/fetchData';
+import arrowRight from '../../assets/arrow-right.svg';
 import './index.scss';
 
 const List = () => {
+  // local state
   let state = {};
 
-  console.log('arrow: ', arrow);
+  // get the contact data
+  fetchData(theData);
+  if (theData !== null) {
+    console.log('theData: ', theData);
+  }
 
   render(
     `<section class="list">
@@ -15,7 +22,7 @@ const List = () => {
           <div class="px-1">
             <p class="">Cecelia Schneider</p>
           </div>
-          <div class="px-1"><img src="${arrow}" alt="arrow" /></div>
+          <div class="px-1"><img class="arrow-right" src="${arrowRight}" alt="arrow" /></div>
         </li>
       </ul>
     </section>`

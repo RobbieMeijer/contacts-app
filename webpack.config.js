@@ -22,7 +22,7 @@ module.exports = {
       {
         test: /\.(png|svg|jpg|jpeg|gif)$/i,
         dependency: { not: ['url'] },
-        use: 'url-loader',
+        use: 'url-loader', // this loader is depricated, must solve into webpack 5 way soon
         type: 'javascript/auto',
       },
     ],
