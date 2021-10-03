@@ -6,6 +6,7 @@ const Header = () => {
   };
 
   render(
+    document.body,
     `<header class="header text-center p-1">
       <h1 class="font-w-bold">Contacts</h1>
     </header>`

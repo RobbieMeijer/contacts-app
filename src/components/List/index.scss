@@ -1,6 +1,9 @@
 @import '../../styles/variables.scss';
 
 .list {
+  &-item {
+  }
+
   .thumb {
     width: $img-size;
     height: $img-size;

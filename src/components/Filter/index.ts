@@ -9,6 +9,7 @@ const Filter = () => {
   };
 
   render(
+    document.body,
     `<section class="filter p-1">
       sort by: 
       <button class="btn" onclick="${() => logText()}">All</button>

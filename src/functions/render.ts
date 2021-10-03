@@ -1,6 +1,8 @@
 // render html to the view
-const render = (html: string) => {
-  document.body.insertAdjacentHTML('beforeend', html);
+const render = (domNode: any, html: string) => {
+  if (domNode !== null) {
+    domNode.insertAdjacentHTML('beforeend', html);
+  }
 };
 
 export default render;

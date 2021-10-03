@@ -5,6 +5,7 @@ const fetchData = (theData: any) => {
     error: '',
     data: {},
   };
+
   // destructure local state
   const { loading, error, data } = state;
 
@@ -13,14 +14,9 @@ const fetchData = (theData: any) => {
     try {
       const response = await fetch(theData);
       if (response.ok) {
-        // save data to local state
-        state.data = theData;
-
-        // save loading to local state
-        state.loading = false;
-
-        // save error to local state
-        state.error = '';
+        state.data = theData; // save data to local state
+        state.loading = false; // save loading to local state
+        state.error = ''; // save error to local state
       }
     } catch (error) {
       // save new error message to local state
