@@ -3,7 +3,7 @@ const fetchData = (theData: any) => {
   let state = {
     loading: true,
     error: '',
-    data: null || '',
+    data: {},
   };
   // destructure local state
   const { loading, error, data } = state;
