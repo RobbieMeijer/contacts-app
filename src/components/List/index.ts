@@ -1,12 +1,11 @@
 import render from '../../functions/render';
-import renderImage from '../../functions/renderImage';
+import arrow from '../../assets/navigate_next.svg';
 import './index.scss';
 
 const List = () => {
   let state = {};
-  // const navigate_next = '../../assets/navigate_next.svg';
 
-  console.log('renderImage: ', renderImage('navigate_next'));
+  console.log('arrow: ', arrow);
 
   render(
     `<section class="list">
@@ -16,7 +15,7 @@ const List = () => {
           <div class="px-1">
             <p class="">Cecelia Schneider</p>
           </div>
-          <div class="px-1"></div>
+          <div class="px-1"><img src="${arrow}" alt="arrow" /></div>
         </li>
       </ul>
     </section>`
