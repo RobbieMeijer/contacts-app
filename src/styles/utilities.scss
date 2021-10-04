@@ -75,7 +75,8 @@
 }
 
 // buttons
-.btn {
+.btn,
+button {
   @extend .py-1-half;
   @extend .px-1;
   @extend .mx-1-quarter;
