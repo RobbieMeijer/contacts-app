@@ -73,24 +73,51 @@ const List = () => {
     // 1. render parent html first
     renderSection();
 
-    // 2. render contacts into parent html
-    state.data.map((contact: Contact, index: number) => {
-      // destructure properties from contact
-      const { name, img } = contact;
+    // 2. empty list section
+    document.querySelector('.list').innerHTML = '';
+    currentPage--; // first page zero based
+
+    // 3. setup pagination
+    let start = rowsPerPage * currentPage;
+    let end = start + rowsPerPage;
+    let paginatedItems = data.slice(start, end);
+    console.log('currentPage: ', currentPage);
+
+    // 4. loop through contacts and render into list
+    paginatedItems.map((paginatedItem: Contact, index: number) => {
+      const { name, img } = paginatedItem;
+      console.log('paginatedItem: ', paginatedItem);
+
       render(
         document.querySelector('.list'),
-        `<div onclick="${function selectContact() {
-          renderModal(contact);
-          console.log('hallo ');
-        }}" class="list-item p-0 flex flex-align-center p-1 pointer" id="${index}">
-            <img class="thumb rhombus" src="${img}" alt="portrait of person" />
-            <div class="px-1">
-              <p class="">${name}</p>
-            </div>
-            <div class="px-1"><img class="arrow-right" src="${arrowRight}" alt="arrow" /></div>
-          </div>`
+        `<div class="list-item p-0 flex flex-align-center p-1 pointer" id="${index}">
+          <img class="thumb rhombus" src="${img}" alt="portrait of person" />
+          <div class="px-1">
+            <p class="">${name}</p>
+          </div>
+          <div class="px-1"><img class="arrow-right" src="${arrowRight}" alt="arrow" /></div>
+       </div>`
       );
     });
+
+    // 2. render contacts into parent html
+    // state.data.map((contact: Contact, index: number) => {
+    //   // destructure properties from contact
+    //   const { name, img } = contact;
+    //   render(
+    //     document.querySelector('.list'),
+    //     `<div onclick="${function selectContact() {
+    //       // renderModal(contact);
+    //       console.log('hallo ');
+    //     }}" class="list-item p-0 flex flex-align-center p-1 pointer" id="${index}">
+    //         <img class="thumb rhombus" src="${img}" alt="portrait of person" />
+    //         <div class="px-1">
+    //           <p class="">${name}</p>
+    //         </div>
+    //         <div class="px-1"><img class="arrow-right" src="${arrowRight}" alt="arrow" /></div>
+    //       </div>`
+    //   );
+    // });
   }
 
   function renderSection() {
