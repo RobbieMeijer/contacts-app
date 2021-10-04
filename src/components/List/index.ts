@@ -16,115 +16,55 @@ const List = () => {
     currentPage: 1,
     rows: 5,
   };
-  const { data, currentPage, rows } = state;
 
   // get the contact data
   fetchData(theData);
   // when data is available render the list
   if (theData !== null) {
     state.data = theData; // save the data to local storage
-    renderList(data, rows, currentPage);
+    renderSection(); // render the parent html for list
+    renderList(state.data, state.rows, state.currentPage);
   }
 
-  // store contact details to global STATE
-  function storeContactDetails(contact: Contact) {
-    const saveContact = STATE.contactDetails;
-    const { name, address, info, img } = contact;
+  function renderList(data: [], rowsPerPage: number, currentPage: number) {
+    console.log('state.data from renderList: ', state.data);
 
-    saveContact.name = name;
-    saveContact.address = address;
-    saveContact.info = info;
-    saveContact.img = img;
+    // 1. empty list section, preventing stacking results on top of each other
+    document.getElementById('list').innerHTML = '';
 
-    console.log('saveContact: ', saveContact);
-  }
+    // 2. get first five contacts (based on state.rows)
+    currentPage--; // first/current page decrement to zero based index
+    let start = rowsPerPage * currentPage; // loop start
+    let end = start + rowsPerPage; // loop end
+    let paginatedItems = data.slice(start, end); // selection of 5 contacts from array
+    console.log('paginatedItems: ', paginatedItems);
 
-  // create modal
-  function createModal() {
-    render(
-      document.body,
-      `<section class="modal" style="width:100vw; height:100vh; margin: 0 auto;">
-        <div class="img">
-          <img class="thumb-big" src="${img}" alt="portrait of person" />
-        </div>
-        <div class="name">
-          <h3 class="">${name}</h3> 
-        </div>
-        <div class="address">
-          <p>${address}</p>
-        </div>
-        <div class="info">
-          <p>${info}</p>
-        </div>
-      </section>`
-    );
-  }
-
-  // render modal
-  function renderModal(contact: Contact) {
-    // 1. store contact details to global STATE
-    storeContactDetails(contact);
-
-    // 2. create modal and show in view
-    createModal();
-  }
-
-  function renderList(data: [], rowsPerPage: any, currentPage: any) {
-    // 1. render parent html first
-    renderSection();
-
-    // 2. empty list section
-    document.querySelector('.list').innerHTML = '';
-    currentPage--; // first page zero based
-
-    // 3. setup pagination
-    let start = rowsPerPage * currentPage;
-    let end = start + rowsPerPage;
-    let paginatedItems = data.slice(start, end);
-    console.log('currentPage: ', currentPage);
-
-    // 4. loop through contacts and render into list
+    // 3. loop through these contacts and render into list
     paginatedItems.map((paginatedItem: Contact, index: number) => {
-      const { name, img } = paginatedItem;
-      console.log('paginatedItem: ', paginatedItem);
+      const { name, address, img } = paginatedItem;
 
       render(
-        document.querySelector('.list'),
+        document.getElementById('list'),
         `<div class="list-item p-0 flex flex-align-center p-1 pointer" id="${index}">
           <img class="thumb rhombus" src="${img}" alt="portrait of person" />
           <div class="px-1">
             <p class="">${name}</p>
+            <address>${address}</address>
           </div>
           <div class="px-1"><img class="arrow-right" src="${arrowRight}" alt="arrow" /></div>
        </div>`
       );
     });
-
-    // 2. render contacts into parent html
-    // state.data.map((contact: Contact, index: number) => {
-    //   // destructure properties from contact
-    //   const { name, img } = contact;
-    //   render(
-    //     document.querySelector('.list'),
-    //     `<div onclick="${function selectContact() {
-    //       // renderModal(contact);
-    //       console.log('hallo ');
-    //     }}" class="list-item p-0 flex flex-align-center p-1 pointer" id="${index}">
-    //         <img class="thumb rhombus" src="${img}" alt="portrait of person" />
-    //         <div class="px-1">
-    //           <p class="">${name}</p>
-    //         </div>
-    //         <div class="px-1"><img class="arrow-right" src="${arrowRight}" alt="arrow" /></div>
-    //       </div>`
-    //   );
-    // });
   }
+
+  function pageNavigation() {}
 
   function renderSection() {
     render(
       document.body,
-      `<section class="list">
-      </section>`
+      `<section id="list">
+      </section>
+      <nav id="page-navigation"></nav>`
     );
   }
 };
