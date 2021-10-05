@@ -1,5 +1,6 @@
 import render from './render';
 import arrowRight from '../assets/arrow-right.svg';
+import renderModal from './renderModal';
 import { Contact } from '../types';
 
 function renderList(
@@ -13,17 +14,17 @@ function renderList(
 
   // 2. get first five contacts (based on state.rows)
   currentPage--; // first/current page decrement to zero based index
-  let start = rowsPerPage * currentPage; // loop start
-  let end = start + rowsPerPage; // loop end
-  let paginatedItems = data.slice(start, end); // selection of 5 contacts from array
+  const start = rowsPerPage * currentPage; // loop start
+  const end = start + rowsPerPage; // loop end
+  const paginatedItems = data.slice(start, end); // selection of 5 contacts from array
 
   // 3. loop through these contacts and render into list
-  paginatedItems.map((paginatedItem: Contact, index: number) => {
-    const { name, address, img } = paginatedItem;
+  paginatedItems.map((paginatedItem: Contact) => {
+    const { id, name, address, img, info } = paginatedItem;
 
     render(
       domNode,
-      `<div class="list-item p-0 flex flex-align-center p-1 pointer" id="${index}">
+      `<div class="list-item p-0 flex flex-align-center p-1 pointer" id="${id}" data-info="${info}">
         <img class="thumb rhombus" src="${img}" alt="portrait of person" />
         <div class="px-1">
           <p class="">${name}</p>
@@ -32,6 +33,15 @@ function renderList(
         <div class="px-1"><img class="arrow-right" src="${arrowRight}" alt="arrow" /></div>
      </div>`
     );
+  });
+
+  // add modal event listener to all list items
+  document.querySelectorAll('.list-item').forEach((item: HTMLElement) => {
+    item.addEventListener('click', () => {
+      console.log('item.dataset.info: ', item.dataset.info);
+
+      renderModal(item.dataset.info, document.body);
+    });
   });
 }
 

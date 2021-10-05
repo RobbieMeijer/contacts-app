@@ -10,7 +10,7 @@ const Filter = () => {
 
   render(
     document.body,
-    `<section class="filter p-1">
+    `<section id="filter" class="p-1">
       sort by: 
       <button class="btn" onclick="${() => logText()}">All</button>
       <button class="btn">Name</button>

@@ -1,12 +1,11 @@
 let STATE = {
-  contactDetails: {
-    name: '',
-    address: '',
+  modal: {
+    id: 0.0,
+    active: false,
     info: '',
-    img: '',
   },
   contactList: {
-    data: [{ name: '', address: '', info: '', img: '' }],
+    data: [{ id: '', name: '', address: '', info: '', img: '' }],
     currentPage: 1,
     rows: 5,
     totalPages: 0,
