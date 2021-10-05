@@ -3,12 +3,13 @@ import arrowRight from '../assets/arrow-right.svg';
 import { Contact } from '../types';
 
 function renderList(
-  data: { name: string; address: string; info: string; img: string }[],
+  data: Contact[],
   rowsPerPage: number,
-  currentPage: number
+  currentPage: number,
+  domNode: HTMLElement
 ) {
   // 1. empty list section, preventing stacking results on top of each other
-  document.getElementById('list').innerHTML = '';
+  domNode.innerHTML = '';
 
   // 2. get first five contacts (based on state.rows)
   currentPage--; // first/current page decrement to zero based index
@@ -21,7 +22,7 @@ function renderList(
     const { name, address, img } = paginatedItem;
 
     render(
-      document.getElementById('list'),
+      domNode,
       `<div class="list-item p-0 flex flex-align-center p-1 pointer" id="${index}">
         <img class="thumb rhombus" src="${img}" alt="portrait of person" />
         <div class="px-1">

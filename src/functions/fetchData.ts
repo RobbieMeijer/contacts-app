@@ -15,6 +15,7 @@ const fetchData = (theData: any) => {
       const response = await fetch(theData);
       if (response.ok) {
         state.data = theData; // save data to local state
+        console.log('state.data from fetchData: ', state.data);
         state.loading = false; // save loading to local state
         state.error = ''; // save error to local state
       }
