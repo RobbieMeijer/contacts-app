@@ -1,0 +1,21 @@
+@import '../../styles/variables.scss';
+
+.list-item {
+  position: relative;
+
+  .thumb {
+    width: $img-size;
+    height: $img-size;
+  }
+
+  .arrow-right {
+    position: absolute;
+    top: 33%;
+    right: 1rem;
+  }
+
+  @media screen and (min-width: 680px) {
+    width: 50%;
+    float: left;
+  }
+}

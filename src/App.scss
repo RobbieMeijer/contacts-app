@@ -4,14 +4,7 @@
 
 html {
   overflow-y: scroll;
-  background-image: gradient(
-    linear,
-    left top,
-    left bottom,
-    from(transparent),
-    to(#000)
-  );
-  background-image: linear-gradient(transparent, #000);
+  background-color: lightgrey;
 }
 
 body {
@@ -21,10 +14,14 @@ body {
     linear,
     left top,
     right top,
-    from($color-hot-pink),
-    to($color-blue-dark)
+    from($color-blue-light),
+    to($color-blue-medium)
   );
-  background-image: linear-gradient(90deg, $color-hot-pink, $color-blue-dark);
+  background-image: linear-gradient(
+    90deg,
+    $color-blue-light,
+    $color-blue-medium
+  );
   width: min(100vw, 768px);
   height: auto;
   margin: 0 auto;

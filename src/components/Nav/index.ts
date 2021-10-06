@@ -1,6 +1,9 @@
+import './index.scss';
 import render from '../../functions/render';
 import STATE from '../../state';
 import ListItem from '../ListItem';
+import arrowLeft from '../../assets/arrow-left.svg';
+import arrowRight from '../../assets/arrow-right.svg';
 
 const Nav = () => {
   // global STATE
@@ -46,11 +49,13 @@ const Nav = () => {
 
   render(
     document.body,
-    `<nav id="page-navigation" class="flex flex-align-center">
-      <button class="previous"> < </button>
-      <p class="current-page">${currentPage}<p>&nbsp;/&nbsp;<p class="total-pages"></p>
-      <button class="next"> > </button>
-    </nav>`
+    `<section id="page-navigation" class="m-top-1 p-1">
+      <nav class="flex flex-align-center">
+        <button class="previous flex"><img class="arrow" src="${arrowLeft}" alt="arrow left" /> prev</button>
+        <p class="current-page">${currentPage}<p>&nbsp;/&nbsp;<p class="total-pages"></p>
+        <button class="next flex">next <img class="arrow" src="${arrowRight}" alt="arrow right" /></button>
+      </nav>
+    </section>`
   );
 
   // adding click events and totalpages to navigation, after the dom render,

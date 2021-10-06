@@ -3,14 +3,15 @@
 #modal {
   width: clamp(300px, 80%, 768px);
   height: clamp(250px, 33%, 350px);
-  background-color: $color-blue-dark;
+  background-color: white;
   position: absolute;
-  top: 33%;
+  top: 23%;
   right: 10%;
   box-shadow: 0 0 30px $color-shadow-light;
   transition: all 0.4s ease-in-out;
   transform: translateX(100%);
   opacity: 0;
+  color: $color-blue-dark;
 }
 
 #modal.active {
@@ -21,4 +22,5 @@
 
 #close-modal {
   float: right;
+  color: $color-blue-dark;
 }

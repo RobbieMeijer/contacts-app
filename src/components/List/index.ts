@@ -1,4 +1,3 @@
-import './index.scss';
 import render from '../../functions/render';
 import theData from '../../api/exportContactsData';
 import fetchData from '../../functions/fetchData';

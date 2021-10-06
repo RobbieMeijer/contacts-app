@@ -1,3 +1,4 @@
+import './index.scss';
 import render from '../../functions/render';
 import arrowRight from '../../assets/arrow-right.svg';
 import renderModal from '../Modal';
@@ -46,7 +47,7 @@ const ListItem = (
         <div class="px-1">
           ${content}
         </div>
-        <div class="px-1"><img class="arrow-right" src="${arrowRight}" alt="arrow" /></div>
+        <div class="arrow-right px-1"><img src="${arrowRight}" alt="arrow" /></div>
      </div>`
     );
   });

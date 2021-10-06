@@ -1,2 +1,11 @@
+@import '../../styles/variables.scss';
+
 #page-navigation {
+  background-color: $color-blue-light;
+  clear: both;
+
+  nav {
+    margin: 0 auto;
+    width: 226px;
+  }
 }
