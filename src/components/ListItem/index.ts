@@ -1,18 +1,18 @@
-import render from './render';
-import arrowRight from '../assets/arrow-right.svg';
-import renderModal from './renderModal';
-import { Contact } from '../types';
+import render from '../../functions/render';
+import arrowRight from '../../assets/arrow-right.svg';
+import renderModal from '../Modal';
+import { Contact } from '../../types';
 
-function renderList(
+const ListItem = (
   data: Contact[],
   rowsPerPage: number,
   currentPage: number,
   domNode: HTMLElement
-) {
+) => {
   // 1. empty list section, preventing stacking results on top of each other
   domNode.innerHTML = '';
 
-  // 2. get first five contacts (based on state.rows)
+  // 2. get first five contacts
   currentPage--; // first/current page decrement to zero based index
   const start = rowsPerPage * currentPage; // loop start
   const end = start + rowsPerPage; // loop end
@@ -38,11 +38,10 @@ function renderList(
   // add modal event listener to all list items
   document.querySelectorAll('.list-item').forEach((item: HTMLElement) => {
     item.addEventListener('click', () => {
-      console.log('item.dataset.info: ', item.dataset.info);
-
+      // show the modal with dataset from paginatedItem
       renderModal(item.dataset.info, document.body);
     });
   });
-}
+};
 
-export default renderList;
+export default ListItem;

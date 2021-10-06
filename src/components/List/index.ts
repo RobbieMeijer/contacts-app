@@ -3,7 +3,7 @@ import render from '../../functions/render';
 import theData from '../../api/exportContactsData';
 import fetchData from '../../functions/fetchData';
 import STATE from '../../state';
-import renderList from '../../functions/renderList';
+import ListItem from '../ListItem';
 
 const List = () => {
   // global STATE
@@ -16,7 +16,7 @@ const List = () => {
   if (theData !== null) {
     STATE.contactList.data = theData; // save the data to local storage
     renderSection(); // render the parent html for list
-    renderList(
+    ListItem(
       STATE.contactList.data,
       rows,
       currentPage,

@@ -1,13 +1,13 @@
 import render from '../../functions/render';
 import STATE from '../../state';
-import renderList from '../../functions/renderList';
+import ListItem from '../ListItem';
 
 const Nav = () => {
   // global STATE
   let { data, currentPage, rows, totalPages } = STATE.contactList;
 
   function renderListAndCurrentPage() {
-    renderList(data, rows, currentPage, document.getElementById('list'));
+    ListItem(data, rows, currentPage, document.getElementById('list'));
     renderCurrentPage(document.querySelector('.current-page'));
   }
 

@@ -1,0 +1,24 @@
+@import '../../styles/variables.scss';
+
+#modal {
+  width: clamp(300px, 80%, 768px);
+  height: clamp(250px, 33%, 350px);
+  background-color: $color-blue-dark;
+  position: absolute;
+  top: 33%;
+  right: 10%;
+  box-shadow: 0 0 30px $color-shadow-light;
+  transition: all 0.4s ease-in-out;
+  transform: translateX(100%);
+  opacity: 0;
+}
+
+#modal.active {
+  transition: all 0.3s ease-in-out;
+  opacity: 1;
+  right: 90%;
+}
+
+#close-modal {
+  float: right;
+}
