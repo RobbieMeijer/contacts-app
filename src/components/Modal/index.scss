@@ -12,12 +12,14 @@
   transform: translateX(100%);
   opacity: 0;
   color: $color-blue-dark;
-}
+  border-radius: 0.25rem;
+  overflow: auto;
 
-#modal.active {
-  transition: all 0.3s ease-in-out;
-  opacity: 1;
-  right: 90%;
+  &.active {
+    transition: all 0.3s ease-in-out;
+    opacity: 1;
+    right: 90%;
+  }
 }
 
 #close-modal {

@@ -1,8 +1,29 @@
-@import '../../styles/variables.scss';
+@import '../../styles/mixins.scss';
 
 #page-navigation {
-  background-color: $color-blue-light;
+  @include menu-general;
   clear: both;
+
+  &::before,
+  &::after {
+    @include corner-accent-general;
+  }
+
+  &::before {
+    @include corner-accent-position-and-bg(
+      bottom,
+      right,
+      $bg-color: $color-blue-medium
+    );
+  }
+
+  &::after {
+    @include corner-accent-position-and-bg(
+      top,
+      left,
+      $bg-color: $color-blue-semi-medium
+    );
+  }
 
   nav {
     margin: 0 auto;

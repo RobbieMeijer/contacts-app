@@ -1,21 +1,54 @@
-@import '../../styles/variables.scss';
+// local variables
+$transition: all 0.3s ease-in-out;
+$border: 1px solid rgba(255, 255, 255, 0.25);
+$thumb-size: 60px;
 
 .list-item {
   position: relative;
+  border-top: $border;
 
-  .thumb {
-    width: $img-size;
-    height: $img-size;
+  &:active,
+  &:hover {
+    .arrow-right img {
+      transition: $transition;
+      transform: translateX(30%);
+    }
   }
 
-  .arrow-right {
-    position: absolute;
-    top: 33%;
-    right: 1rem;
+  &:last-of-type {
+    border-bottom: $border;
   }
 
   @media screen and (min-width: 680px) {
     width: 50%;
     float: left;
+
+    &:nth-of-type(odd) {
+      border-right: $border;
+    }
+
+    &:nth-of-type(4n) {
+      border-bottom: $border;
+    }
+
+    &:hover {
+      .thumb {
+        transition: $transition;
+        transform: rotate(360deg);
+      }
+    }
+  }
+
+  .thumb {
+    width: $thumb-size;
+    height: $thumb-size;
+    clip-path: polygon(50% 0%, 100% 50%, 50% 100%, 0% 50%);
+  }
+
+  .arrow-right {
+    transition: $transition;
+    position: absolute;
+    top: 33%;
+    right: 1rem;
   }
 }

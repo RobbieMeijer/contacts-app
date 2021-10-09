@@ -1,11 +1,14 @@
 /* /// utility classes /// */
 
-// text positioning
+// text
 .text-center {
   text-align: center;
 }
+.text-uppercase {
+  text-transform: uppercase;
+}
 
-// font styling
+// font
 .font-w-light {
   font-weight: $font-w-light;
 }
@@ -77,11 +80,6 @@
   margin-top: 1rem;
 }
 
-// borders
-.b-radius-8 {
-  border-radius: 0.5rem;
-}
-
 // buttons
 .btn,
 button {
@@ -109,11 +107,6 @@ button {
 }
 .flex-align-center {
   align-items: center;
-}
-
-// masks
-.rhombus {
-  clip-path: polygon(50% 0%, 100% 50%, 50% 100%, 0% 50%);
 }
 
 // mouse events

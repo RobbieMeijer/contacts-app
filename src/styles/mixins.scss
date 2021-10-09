@@ -1,0 +1,24 @@
+@import './variables.scss';
+
+// menu's: filter, page navigation
+@mixin menu-general() {
+  background-color: $color-blue-light;
+  position: relative;
+  overflow: hidden;
+}
+
+// general styling for enabling corner accents
+@mixin corner-accent-general() {
+  content: '';
+  position: absolute;
+  width: $corner-pseudo-size;
+  height: $corner-pseudo-size;
+  transform: rotate(45deg);
+}
+
+// custom corners
+@mixin corner-accent-position-and-bg($position1, $position2, $bg-color) {
+  #{$position1}: $corner-pseudo-position;
+  #{$position2}: $corner-pseudo-position;
+  background-color: $bg-color;
+}

@@ -28,7 +28,7 @@ const ListItem = (
     const { id, name, address, img, info } = paginatedItem;
     let content = ``;
 
-    // check filter has changed, if so render by filter
+    // check filter has changed, if so render content by filter
     switch (filter) {
       case 'filter-by-name':
         content = `<p>${name}</p>`;
@@ -43,7 +43,7 @@ const ListItem = (
     render(
       domNode,
       `<div class="list-item p-0 flex flex-align-center p-1 pointer" id="${id}" data-info="${info}">
-        <img class="thumb rhombus" src="${img}" alt="portrait of person" />
+        <img class="thumb" src="${img}" alt="portrait of person" />
         <div class="px-1">
           ${content}
         </div>

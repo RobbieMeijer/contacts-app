@@ -49,11 +49,11 @@ const Nav = () => {
 
   render(
     document.body,
-    `<section id="page-navigation" class="m-top-1 p-1">
+    `<section id="page-navigation" class="p-1">
       <nav class="flex flex-align-center">
-        <button class="previous flex"><img class="arrow" src="${arrowLeft}" alt="arrow left" /> prev</button>
+        <button class="previous flex text-uppercase"><img class="arrow" src="${arrowLeft}" alt="arrow left" /> prev</button>
         <p class="current-page">${currentPage}<p>&nbsp;/&nbsp;<p class="total-pages"></p>
-        <button class="next flex">next <img class="arrow" src="${arrowRight}" alt="arrow right" /></button>
+        <button class="next flex text-uppercase">next <img class="arrow" src="${arrowRight}" alt="arrow right" /></button>
       </nav>
     </section>`
   );

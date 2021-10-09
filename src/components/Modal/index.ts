@@ -25,8 +25,8 @@ const Modal = (info: string, domNode: HTMLElement) => {
 
   render(
     domNode,
-    `<div id="modal" class="p-1 b-radius-8">
-      <button id="close-modal" class=""> x </button>
+    `<div id="modal" class="p-1">
+      <button id="close-modal"> x </button>
       <p>${info}</p>
     </div>`
   );

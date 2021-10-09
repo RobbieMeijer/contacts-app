@@ -26,7 +26,7 @@ const List = () => {
   function renderSection() {
     render(
       document.body,
-      `<section id="list" class="">
+      `<section id="list">
       </section>`
     );
   }

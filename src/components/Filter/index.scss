@@ -1,5 +1,26 @@
-@import '../../styles/variables.scss';
+@import '../../styles/mixins.scss';
 
 #filter {
-  background-color: $color-blue-light;
+  @include menu-general;
+
+  &::before,
+  &::after {
+    @include corner-accent-general;
+  }
+
+  &::before {
+    @include corner-accent-position-and-bg(
+      bottom,
+      left,
+      $bg-color: $color-blue-semi-medium
+    );
+  }
+
+  &::after {
+    @include corner-accent-position-and-bg(
+      top,
+      right,
+      $bg-color: $color-blue-medium
+    );
+  }
 }
