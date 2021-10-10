@@ -4,30 +4,49 @@ import STATE from '../../state';
 import ListItem from '../ListItem';
 import arrowLeft from '../../assets/arrow-left.svg';
 import arrowRight from '../../assets/arrow-right.svg';
+import animate from '../../functions/animate';
 
 const Nav = () => {
   // global STATE
   let { data, currentPage, rows, totalPages } = STATE.contactList;
 
-  function renderListAndCurrentPage() {
+  function renderListAndCurrentPage(navClicked: string) {
     ListItem(data, rows, currentPage, document.getElementById('list'));
-    renderCurrentPage(document.querySelector('.current-page'));
+    renderCurrentPage(document.querySelector('.current-page'), navClicked);
   }
 
   function getPreviousPage() {
     // preventing navigating to 0 or less than 0
     if (currentPage !== 1) {
       currentPage--;
-      renderListAndCurrentPage();
+      renderListAndCurrentPage('prev');
     }
   }
 
-  function renderCurrentPage(domNode: HTMLElement) {
+  function renderCurrentPage(domNode: HTMLElement, navClicked: string) {
     // 1. empty current-page dom (reset)
     domNode.innerHTML = '';
 
     // 2. add new current page value
     render(domNode, `${currentPage}`);
+
+    // 3. animate list items
+    switch (navClicked) {
+      case 'next':
+        document.querySelectorAll('.container').forEach((item: HTMLElement) => {
+          item.classList.add('next');
+        });
+        animate('.list-item');
+        break;
+      case 'prev':
+        document.querySelectorAll('.container').forEach((item: HTMLElement) => {
+          item.classList.add('prev');
+        });
+        animate('.list-item');
+        break;
+      default:
+        animate('.list-item');
+    }
   }
 
   function renderTotalPages(domNode: HTMLElement) {
@@ -43,7 +62,7 @@ const Nav = () => {
   function getNextPage() {
     if (currentPage !== totalPages) {
       currentPage++; // change to next page
-      renderListAndCurrentPage();
+      renderListAndCurrentPage('next');
     }
   }
 

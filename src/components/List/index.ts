@@ -6,7 +6,7 @@ import ListItem from '../ListItem';
 
 const List = () => {
   // global STATE
-  let { data, currentPage, rows } = STATE.contactList;
+  let { currentPage, rows } = STATE.contactList;
 
   // get the contact data
   fetchData(theData);

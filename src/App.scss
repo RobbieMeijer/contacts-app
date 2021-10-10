@@ -10,13 +10,6 @@ html {
 body {
   color: #fff;
   font-family: 'Work Sans', sans-serif;
-  background-image: gradient(
-    linear,
-    left top,
-    right top,
-    from($color-blue-light),
-    to($color-blue-medium)
-  );
   background-image: linear-gradient(
     90deg,
     $color-blue-light,

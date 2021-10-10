@@ -19,7 +19,7 @@ const Modal = (info: string, domNode: HTMLElement) => {
   // setup animation function to modal
   function animateModal() {
     setTimeout(() => {
-      document.getElementById('modal').classList.add('active');
+      document.getElementById('modal').classList.add('animate');
     }, 100);
   }
 
@@ -33,7 +33,7 @@ const Modal = (info: string, domNode: HTMLElement) => {
 
   // add event listener to invoke animation function
   document.getElementById('close-modal').addEventListener('click', () => {
-    document.getElementById('modal').classList.remove('active');
+    document.getElementById('modal').classList.remove('animate');
   });
 };
 

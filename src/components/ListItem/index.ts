@@ -4,6 +4,7 @@ import arrowRight from '../../assets/arrow-right.svg';
 import renderModal from '../Modal';
 import STATE from '../../state';
 import { Contact } from '../../types';
+import animate from '../../functions/animate';
 
 const ListItem = (
   data: Contact[],
@@ -26,7 +27,7 @@ const ListItem = (
   // 3. loop through these contacts and render into list
   paginatedItems.map((paginatedItem: Contact) => {
     const { id, name, address, img, info } = paginatedItem;
-    let content = ``;
+    let content = '';
 
     // check filter has changed, if so render content by filter
     switch (filter) {
@@ -42,13 +43,15 @@ const ListItem = (
 
     render(
       domNode,
-      `<div class="list-item p-0 flex flex-align-center p-1 pointer" id="${id}" data-info="${info}">
-        <img class="thumb" src="${img}" alt="portrait of person" />
-        <div class="px-1">
-          ${content}
+      `<div class="list-item p-1 pointer" id="${id}" data-info="${info}">
+        <div class="container flex flex-align-center">
+          <img class="thumb" src="${img}" alt="portrait of person" />
+          <div class="px-1">
+            ${content}
+          </div>
+          <div class="arrow-right px-1"><img src="${arrowRight}" alt="arrow" /></div>
         </div>
-        <div class="arrow-right px-1"><img src="${arrowRight}" alt="arrow" /></div>
-     </div>`
+      </div>`
     );
   });
 
@@ -59,6 +62,8 @@ const ListItem = (
       renderModal(item.dataset.info, document.body);
     });
   });
+  // animate the list items on initial render
+  animate('.list-item');
 };
 
 export default ListItem;

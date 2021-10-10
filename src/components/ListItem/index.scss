@@ -1,3 +1,5 @@
+@import '../../styles/variables.scss';
+
 // local variables
 $transition: all 0.3s ease-in-out;
 $border: 1px solid rgba(255, 255, 255, 0.25);
@@ -6,17 +8,15 @@ $thumb-size: 60px;
 .list-item {
   position: relative;
   border-top: $border;
-
-  &:active,
-  &:hover {
-    .arrow-right img {
-      transition: $transition;
-      transform: translateX(30%);
-    }
-  }
+  overflow-x: hidden;
 
   &:last-of-type {
     border-bottom: $border;
+  }
+
+  &:hover {
+    transition: $transition;
+    background-color: $color-blue-dark;
   }
 
   @media screen and (min-width: 680px) {
@@ -32,11 +32,36 @@ $thumb-size: 60px;
     }
 
     &:hover {
-      .thumb {
+      .arrow-right img {
         transition: $transition;
-        transform: rotate(360deg);
+        transform: translateX(70%);
       }
     }
+  }
+
+  .arrow-right img {
+    transition: $transition;
+    transform: translateX(50%);
+  }
+
+  .container {
+    transition: $transition;
+    opacity: 0;
+
+    &.next {
+      transition: $transition;
+      transform: translateX(15%);
+    }
+    &.prev {
+      transition: $transition;
+      transform: translateX(-15%);
+    }
+  }
+
+  &.animate .container {
+    transition: $transition;
+    opacity: 1;
+    transform: translateX(0);
   }
 
   .thumb {
