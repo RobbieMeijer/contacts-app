@@ -5,7 +5,7 @@ import ListItem from '../ListItem';
 
 const Filter = () => {
   // global STATE
-  let { currentPage, rows, filter } = STATE.contactList;
+  let { currentPage, rows } = STATE.contactList;
 
   function filterBy(filterIdName: string) {
     STATE.contactList.filter = filterIdName;
