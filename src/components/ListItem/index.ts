@@ -3,8 +3,9 @@ import render from '../../functions/render';
 import arrowRight from '../../assets/arrow-right.svg';
 import renderModal from '../Modal';
 import STATE from '../../state';
-import { Contact } from '../../types';
 import animate from '../../functions/animate';
+import filterContent from '../../functions/filterContent';
+import { Contact } from '../../types';
 
 const ListItem = (
   data: Contact[],
@@ -27,19 +28,6 @@ const ListItem = (
   // 3. loop through these contacts and render into list
   paginatedItems.map((paginatedItem: Contact) => {
     const { id, name, address, img, info } = paginatedItem;
-    let content = '';
-
-    // check filter has changed, if so render content by filter
-    switch (filter) {
-      case 'filter-by-name':
-        content = `<p>${name}</p>`;
-        break;
-      case 'filter-by-address':
-        content = `<address>${address}</address>`;
-        break;
-      default:
-        content = `<p>${name}</p><address>${address}</address>`;
-    }
 
     render(
       domNode,
@@ -47,7 +35,7 @@ const ListItem = (
         <div class="container flex flex-align-center">
           <img class="thumb" src="${img}" alt="portrait of person" />
           <div class="px-1">
-            ${content}
+            ${filterContent(filter, name, address)}
           </div>
           <div class="arrow-right px-1"><img src="${arrowRight}" alt="arrow" /></div>
         </div>

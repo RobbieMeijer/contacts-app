@@ -26,6 +26,7 @@ const Filter = () => {
       STATE.contactList.filter = 'filter-by-address';
       renderListItem();
     }
+
     if (e.target.id === 'filter-by-all') {
       STATE.contactList.filter = 'filter-by-all';
       renderListItem();

@@ -1,10 +1,6 @@
 import render from '../../functions/render';
 
 const Header = () => {
-  let state = {
-    text: 'initial state text',
-  };
-
   render(
     document.body,
     `<header id="header" class="text-center p-1">
