@@ -1,4 +1,4 @@
-const filterContent = (filter: string, name: string, address: string) => {
+const filteredContent = (filter: string, name: string, address: string) => {
   let state = {
     content: '',
   };
@@ -18,4 +18,4 @@ const filterContent = (filter: string, name: string, address: string) => {
   return state.content;
 };
 
-export default filterContent;
+export default filteredContent;

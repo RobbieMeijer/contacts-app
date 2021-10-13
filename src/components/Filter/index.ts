@@ -5,32 +5,17 @@ import ListItem from '../ListItem';
 
 const Filter = () => {
   // global STATE
-  let { currentPage, rows } = STATE.contactList;
+  let { currentPage, rows, filter } = STATE.contactList;
 
-  function renderListItem() {
+  function filterBy(filterIdName: string) {
+    STATE.contactList.filter = filterIdName;
+
     ListItem(
       STATE.contactList.data,
       rows,
       currentPage,
       document.getElementById('list')
     );
-  }
-
-  function filterBy(e: any) {
-    if (e.target.id === 'filter-by-name') {
-      STATE.contactList.filter = 'filter-by-name';
-      renderListItem();
-    }
-
-    if (e.target.id === 'filter-by-address') {
-      STATE.contactList.filter = 'filter-by-address';
-      renderListItem();
-    }
-
-    if (e.target.id === 'filter-by-all') {
-      STATE.contactList.filter = 'filter-by-all';
-      renderListItem();
-    }
   }
 
   render(
@@ -45,7 +30,8 @@ const Filter = () => {
   // add filter event listener to all filter buttons
   document.querySelectorAll('.filter-btn').forEach((item: HTMLElement) => {
     item.addEventListener('click', (e) => {
-      filterBy(e);
+      const filterIdName = (<HTMLElement>e.target).id;
+      filterBy(filterIdName);
     });
   });
 };

@@ -4,7 +4,7 @@ import arrowRight from '../../assets/arrow-right.svg';
 import renderModal from '../Modal';
 import STATE from '../../state';
 import animate from '../../functions/animate';
-import filterContent from '../../functions/filterContent';
+import filteredContent from '../../functions/filteredContent';
 import { Contact } from '../../types';
 
 const ListItem = (
@@ -35,7 +35,7 @@ const ListItem = (
         <div class="container flex flex-align-center">
           <img class="thumb" src="${img}" alt="portrait of person" />
           <div class="px-1">
-            ${filterContent(filter, name, address)}
+            ${filteredContent(filter, name, address)}
           </div>
           <div class="arrow-right px-1"><img src="${arrowRight}" alt="arrow" /></div>
         </div>
