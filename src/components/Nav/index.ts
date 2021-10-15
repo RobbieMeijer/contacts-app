@@ -31,7 +31,7 @@ const Nav = () => {
     render(domNode, `${currentPage}`);
 
     // 3. animate list items
-    animate('.container', navClicked);
+    animate('.list-item .container', navClicked);
   }
 
   function renderTotalPages(domNode: HTMLElement) {
