@@ -51,7 +51,7 @@ const ListItem = (
     });
   });
   // animate the list items on initial render
-  animate('.list-item');
+  animate('.list-item', null);
 };
 
 export default ListItem;

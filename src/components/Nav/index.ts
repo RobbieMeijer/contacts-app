@@ -31,22 +31,7 @@ const Nav = () => {
     render(domNode, `${currentPage}`);
 
     // 3. animate list items
-    switch (navClicked) {
-      case 'next':
-        document.querySelectorAll('.container').forEach((item: HTMLElement) => {
-          item.classList.add('next');
-        });
-        animate('.list-item');
-        break;
-      case 'prev':
-        document.querySelectorAll('.container').forEach((item: HTMLElement) => {
-          item.classList.add('prev');
-        });
-        animate('.list-item');
-        break;
-      default:
-        animate('.list-item');
-    }
+    animate('.container', navClicked);
   }
 
   function renderTotalPages(domNode: HTMLElement) {
