@@ -1,7 +1,7 @@
 import './index.scss';
 import render from '../../functions/render';
 import arrowRight from '../../assets/arrow-right.svg';
-import renderModal from '../Modal';
+import Modal from '../Modal';
 import STATE from '../../state';
 import animate from '../../functions/animate';
 import filteredContent from '../../functions/filteredContent';
@@ -13,14 +13,12 @@ const ListItem = (
   currentPage: number,
   domNode: HTMLElement
 ) => {
-  // global STATE
-  const { filter } = STATE.contactList;
-
   // 1. empty list section, preventing stacking results on top of each other
   domNode.innerHTML = '';
 
-  // 2. get first five contacts
-  currentPage--; // first/current page decrement to zero based index
+  // 2. setup five contacts from current page
+  STATE.contactList.currentPage = currentPage > 0 ? currentPage : currentPage--; // change current page in global state
+  currentPage--; // get current page
   const start = rowsPerPage * currentPage; // loop start
   const end = start + rowsPerPage; // loop end
   const paginatedItems = data.slice(start, end); // selection of 5 contacts from array
@@ -35,7 +33,7 @@ const ListItem = (
         <div class="container flex flex-align-center">
           <img class="thumb" src="${img}" alt="portrait of person" />
           <div class="px-1">
-            ${filteredContent(filter, name, address)}
+            ${filteredContent(STATE.contactList.filter, name, address)}
           </div>
           <div class="arrow-right px-1"><img src="${arrowRight}" alt="arrow" /></div>
         </div>
@@ -47,7 +45,7 @@ const ListItem = (
   document.querySelectorAll('.list-item').forEach((item: HTMLElement) => {
     item.addEventListener('click', () => {
       // show the modal with dataset from paginatedItem
-      renderModal(item.dataset.info, document.body);
+      Modal(item.dataset.info, document.body);
     });
   });
   // animate the list items on initial render

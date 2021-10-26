@@ -1,0 +1,14 @@
+@import '../../styles/mixins.scss';
+
+#list {
+  $heights-padding: 2rem; // twice the padding of header, filter and nav
+  $height-header: 48px; // height without padding
+  $height-filter-and-nav: 72px; // height without padding
+
+  .status {
+    @include loading($heights-padding, $height-header, $height-filter-and-nav);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+}

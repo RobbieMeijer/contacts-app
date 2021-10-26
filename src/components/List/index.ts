@@ -1,3 +1,4 @@
+import './index.scss';
 import render from '../../functions/render';
 import theData from '../../api/exportContactsData';
 import fetchData from '../../functions/fetchData';
@@ -5,20 +6,19 @@ import STATE from '../../state';
 import ListItem from '../ListItem';
 
 const List = () => {
-  // global STATE
-  let { currentPage, rows } = STATE.contactList;
-
   // get the contact data
   fetchData(theData);
 
   // when data is available render the list
   if (theData !== null) {
-    STATE.contactList.data = theData; // save the data to local storage
+    STATE.fetchData.data = theData; // save the data to global state
     renderSection(); // render the parent html for list
+
+    // render list items into main list
     ListItem(
-      STATE.contactList.data,
-      rows,
-      currentPage,
+      STATE.fetchData.data,
+      STATE.contactList.rows,
+      STATE.contactList.currentPage,
       document.getElementById('list')
     );
   }
@@ -26,8 +26,13 @@ const List = () => {
   function renderSection() {
     render(
       document.body,
-      `<section id="list">
-      </section>`
+      `<main id="list">
+        ${
+          STATE.fetchData.loading
+            ? '<div class="status">...loading</div>'
+            : null
+        }
+      </main>`
     );
   }
 };

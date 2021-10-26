@@ -4,16 +4,13 @@ import STATE from '../../state';
 import ListItem from '../ListItem';
 
 const Filter = () => {
-  // global STATE
-  let { currentPage, rows } = STATE.contactList;
-
   function filterBy(filterIdName: string) {
     STATE.contactList.filter = filterIdName;
 
     ListItem(
-      STATE.contactList.data,
-      rows,
-      currentPage,
+      STATE.fetchData.data,
+      STATE.contactList.rows,
+      STATE.contactList.currentPage,
       document.getElementById('list')
     );
   }

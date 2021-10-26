@@ -22,3 +22,14 @@
   #{$position2}: $corner-pseudo-position;
   background-color: $bg-color;
 }
+
+// loading height
+@mixin loading($paddings-height, $height-header, $height-filter-and-nav) {
+  height: calc(
+    100vh -
+      (
+        (2 * ($height-filter-and-nav + $paddings-height)) +
+          ($height-header + $paddings-height)
+      )
+  );
+}
