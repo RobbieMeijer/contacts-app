@@ -1,4 +1,4 @@
-let STATE = {
+const STATE = {
   contactList: {
     currentPage: 1,
     rows: 5,
